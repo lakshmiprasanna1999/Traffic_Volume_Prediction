@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>ML project</title>
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>traffic volume prediction</h1>
+<form class="form-horizontal" action="{{url_for('home')}}" method="POST">
+<div class="form-group">
+  <label for="sel1">Select Holiday:</label>
+  <select class="form-control" id="sel1" name="Holiday" >
+    <option value='0'>0.Christmas Day</option>
+    <option value='1'>1.Columbus Day</option>
+    <option value='2'>2.Independence day</option>
+    <option value='3'>3.Labor Day</option>
+    <option value='4'>4.Martin Luther King Jr Day</option>
+    <option value='5'>5.Memorial Day</option>
+    <option value='6'>6.New Years Day</option>
+    <option value='7'>7.None</option>
+    <option value='8'>8.State Fair</option>
+    <option value='9'>9.Thanksgiving Day</option>
+    <option value='10'>10.Veterans Day</option>
+    <option value='11'>11.Washingtons Day</option>
+   
+
+
+
+
+  </select>
+</div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="temp">Humidity:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="Temp" name="Temp"placeholder="Enter temperature in kelvins ">
+    </div>
+  </div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="rain_1h">rain_1h:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="rain_1h" name="rain_1h"placeholder="Enter rain_1h ">
+    </div>
+  </div>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="snow_1h">Snow_1h:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="Snow_1h" name="Snow_1h"placeholder="Enter Snow_1h ">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-sm-2" for="clouds_all">Clouds_all:</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="Clouds_all" name="Clouds_all"placeholder="Enter Clouds_all ">
+    </div>
+</div>
+<div class="form-group">
+  <label for="sel1">Select Weather_main:</label>
+  <select class="form-control" id="sel1" name="weather_main">
+    <option value='0'>0.Clear</option>
+    <option value='1'>1.Clouds</option>
+    <option value='2'>2.Drizzle</option>
+    <option value='3'>3.Fog</option>
+    <option value='4'>4.Haze</option>
+    <option value='5'>5.Mist</option>
+    <option value='6'>6.Rain</option>
+    <option value='7'>7.Smoke</option>
+    <option value='8'>8.Snow</option>
+    <option value='9'>9.Squall</option>
+    <option value='10'>10.Thunderstorm</option>
+
+    
+
+  </select>
+</div>
+
+</div>
+  <div class="form-group">
+  <label for="sel1">Select day:</label>
+  <select class="form-control" id="sel1" name= "Day">
+     {% for d in Days %}
+     <option value="{{d}}">{{d}}</option>
+     {%endfor%}
+    
+    
+  </select>
+</div>
+<div class="form-group">
+  <label for="sel1">Select month:</label>
+  <select class="form-control" id="sel1" name="Month" >
+     {% for d in Months %}
+     <option value="{{d}}">{{d}}</option>
+     {%endfor%}
+
+  </select>
+</div>
+<div class="form-group">
+  <label for="sel1">Select year:</label>
+  <select class="form-control" id="sel1" name="Year" >
+    {% for d in Years %}
+    <option value="{{d}}">{{d}}</option>
+    {%endfor%}
+    
+    
+    
+
+  </select>
+</div>
+<div class="form-group">
+  <label for="sel1">Select hours:</label>
+  <select class="form-control" id="sel1" name="Hour">
+    <option>00</option>
+    <option>01</option>
+    <option>02</option>
+    <option>03</option>
+    <option>04</option>
+    <option>05</option>
+    <option>06</option>
+    <option>07</option>
+    <option>08</option>
+    <option>09</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>
+    <option>22</option>
+    <option>23</option>
+    
+
+  </select>
+</div>
+<div class="form-group">
+  <label for="sel1">Select minutes:</label>
+  <select class="form-control" id="sel1" name="Minutes">
+    <option>00</option>
+    <option>01</option>
+    <option>02</option>
+    <option>03</option>
+    <option>04</option>
+    <option>05</option>
+    <option>06</option>
+    <option>07</option>
+    <option>08</option>
+    <option>09</option>
+    <option>10</option>
+    <option>11</option>
+    <option>12</option>
+    <option>13</option>
+    <option>14</option>
+    <option>15</option>
+    <option>16</option>
+    <option>17</option>
+    <option>18</option>
+    <option>19</option>
+    <option>20</option>
+    <option>21</option>
+    <option>22</option>
+    <option>23</option>
+    <option>24</option>
+    <option>25</option>
+    <option>26</option>
+    <option>27</option>
+    <option>28</option>
+    <option>29</option>
+    <option>30</option>
+    <option>31</option>
+    <option>32</option>
+    <option>33</option>
+    <option>34</option>
+    <option>35</option>
+    <option>36</option>
+    <option>37</option>
+    <option>38</option>
+    <option>39</option>
+    <option>40</option>
+    <option>41</option>
+    <option>42</option>
+    <option>43</option>
+    <option>44</option>
+    <option>45</option>
+    <option>46</option>
+    <option>47</option>
+    <option>48</option>
+    <option>49</option>
+    <option>50</option>
+    <option>51</option>
+    <option>52</option>
+    <option>53</option>
+    <option>54</option>
+    <option>55</option>
+    <option>56</option>
+    <option>57</option>
+    <option>58</option>
+    <option>59</option>
+    
+    
+
+  </select>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+
+
+</form>
+<div class="container">
+   <h1> it may be {{Y}} with error of {{M_error}}</h1>
+  
+  
+   
+</div>
+
+</div>
+</body>
+</html>"""
